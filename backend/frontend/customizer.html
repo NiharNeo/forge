@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Forge | Style Engine</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#26022e",
+                        "primary-container": "#e894ff",
+                        "on-secondary-container": "#b3b1ff",
+                        "on-background": "#ffd5ff",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#512a57",
+                        "on-tertiary-fixed-variant": "#004e60",
+                        "inverse-surface": "#ffd5ff",
+                        "surface-container-high": "#401a47",
+                        "on-primary-fixed": "#330044",
+                        "on-surface-variant": "#d2c2d1",
+                        "secondary-container": "#3626ce",
+                        "on-tertiary-container": "#004d5f",
+                        "on-secondary-fixed-variant": "#3323cc",
+                        "tertiary-container": "#00c4ef",
+                        "inverse-primary": "#893da1",
+                        "tertiary-fixed": "#b7eaff",
+                        "tertiary": "#79ddff",
+                        "primary-fixed": "#fbd7ff",
+                        "on-primary-fixed-variant": "#6f2287",
+                        "surface-container-low": "#300a37",
+                        "secondary-fixed": "#e2dfff",
+                        "on-tertiary-fixed": "#001f28",
+                        "surface-container-highest": "#4c2652",
+                        "on-primary": "#54006d",
+                        "on-primary-container": "#6d2186",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#1f0027",
+                        "outline-variant": "#4e4350",
+                        "outline": "#9b8c9b",
+                        "surface-variant": "#4c2652",
+                        "surface-tint": "#f0b0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "surface": "#26022e",
+                        "on-secondary-fixed": "#0f0069",
+                        "background": "#26022e",
+                        "secondary": "#c3c0ff",
+                        "inverse-on-surface": "#47214d",
+                        "primary-fixed-dim": "#f0b0ff",
+                        "on-tertiary": "#003543",
+                        "on-surface": "#ffd5ff",
+                        "tertiary-fixed-dim": "#4cd6ff",
+                        "primary": "#f4bdff",
+                        "on-secondary": "#1d00a5",
+                        "surface-container": "#340f3b"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #26022e;
+            color: #ffd5ff;
+            -webkit-font-smoothing: antialiased;
+        }
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: #401a47;
+            border-radius: 2px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #f4bdff;
+            margin-top: -6px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(244, 189, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary selection:text-on-primary">
+    <!-- Intent Layer Modal -->
+    <div id="intent-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-surface/90 backdrop-blur-xl transition-all duration-500 opacity-100">
+        <div class="bg-surface-container-high border border-outline-variant/20 rounded-[2.5rem] p-12 max-w-2xl w-full mx-6 shadow-2xl shadow-primary/10">
+            <div class="mb-10 text-center">
+                <span class="text-xs font-bold text-primary font-label uppercase tracking-[0.4em] mb-4 block">Initialization</span>
+                <h2 class="text-4xl font-black tracking-tighter text-on-background">Define Your Intent</h2>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">What are you building?</label>
+                    <select id="intent-type" class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface">
+                        <option>SaaS Landing Page</option>
+                        <option>Developer Portfolio</option>
+                        <option>Enterprise Dashboard</option>
+                        <option>E-commerce Store</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Who is it for?</label>
+                    <select id="intent-audience" class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface">
+                        <option>Developers</option>
+                        <option>Consumers (B2C)</option>
+                        <option>Enterprise (B2B)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Primary Goal</label>
+                    <input id="intent-goal" type="text" placeholder="e.g. Lead generation, showcasing projects" class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 text-on-surface">
+                </div>
+                <button id="initialize-forge-btn" class="w-full py-4 bg-primary text-on-primary font-black rounded-xl hover:scale-105 transition-transform mt-8 shadow-xl shadow-primary/20">
+                    Forge AI Website
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout & Nav -->
+    <header class="w-full top-0 sticky z-50 bg-[#26022e] border-b border-outline-variant/10">
+        <div class="flex justify-between items-center px-8 py-5 w-full max-w-screen-2xl mx-auto">
+            <div class="text-2xl font-black tracking-tighter text-[#ffd5ff] font-headline leading-none">Forge</div>
+            <nav class="hidden md:flex items-center space-x-10 text-[#ffd5ff]/70 text-sm font-bold tracking-tight">
+                <a href="#" class="hover:text-primary transition-colors">Features</a>
+                <a href="#" class="hover:text-primary transition-colors">Pricing</a>
+                <a href="#" class="hover:text-primary transition-colors">Docs</a>
+            </nav>
+            <button class="bg-primary text-on-primary font-black px-8 py-2.5 rounded-xl scale-95 hover:scale-100 active:scale-95 transition-all shadow-xl shadow-primary/10">Get Started</button>
+        </div>
+    </header>
+
+    <div class="flex min-h-screen">
+        <aside class="h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col bg-[#1f0027] p-6 border-r border-[#401a47]/20 z-40 pt-24 shadow-2xl">
+            <div class="mb-10">
+                <h2 class="text-[#e894ff] text-xs font-bold uppercase tracking-[0.2em] opacity-40 mb-1">Style Engine</h2>
+                <p class="text-[10px] text-[#ffd5ff]/30 font-medium uppercase tracking-widest">Architect v2.0</p>
+            </div>
+            <nav class="flex-1 space-y-1">
+                <a class="flex items-center gap-3 px-4 py-3.5 bg-[#401a47] text-[#f4bdff] font-black rounded-2xl transition-all" href="#aesthetics">
+                    <span class="material-symbols-outlined text-sm">palette</span>
+                    <span class="text-xs uppercase tracking-widest">Aesthetics</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3.5 text-[#ffd5ff]/40 hover:bg-[#401a47]/40 hover:text-[#f4bdff] rounded-2xl transition-all" href="#mood">
+                    <span class="material-symbols-outlined text-sm">tune</span>
+                    <span class="text-xs uppercase tracking-widest">Mood</span>
+                </a>
+                <a class="flex items-center gap-3 px-4 py-3.5 text-[#ffd5ff]/40 hover:bg-[#401a47]/40 hover:text-[#f4bdff] rounded-2xl transition-all" href="#tone">
+                    <span class="material-symbols-outlined text-sm">psychology</span>
+                    <span class="text-xs uppercase tracking-widest">Tone</span>
+                </a>
+            </nav>
+            <div class="mt-auto pt-6 border-t border-[#401a47]/40">
+                <button id="generate-btn" class="w-full bg-primary text-on-primary py-4 rounded-2xl font-black hover:scale-[1.02] active:scale-95 transition-all shadow-2xl shadow-primary/20 text-xs uppercase tracking-widest">
+                    Generate Site
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Canvas as a container -->
+        <main class="flex-1 md:ml-64 p-12 @container space-y-32 max-w-7xl mx-auto transition-all duration-700">
+            <section class="max-w-4xl">
+                <h1 class="text-5xl @[60rem]:text-8xl font-black tracking-tighter leading-[0.9] mb-8 text-on-background">
+                    Forging <br/><span class="text-primary italic">Identity</span>.
+                </h1>
+                <p class="text-lg @[60rem]:text-2xl text-on-surface-variant font-light leading-relaxed max-w-2xl">Adjust the kinetic parameters of your digital presence. Our Style Engine constructs high-fidelity interfaces based on architectural intent.</p>
+            </section>
+
+            <section id="aesthetics" class="space-y-10">
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-[2px] bg-primary/30"></div>
+                    <h3 class="text-xs font-black uppercase tracking-[0.4em] text-primary">01. Aesthetic Preset</h3>
+                </div>
+                <!-- Responsive Grid based on container width -->
+                <div class="grid grid-cols-1 @[30rem]:grid-cols-2 @[60rem]:grid-cols-4 gap-6">
+                    <div class="aspect-square rounded-3xl bg-surface-container-high border border-outline-variant/10 p-8 flex flex-col justify-end group cursor-pointer hover:border-primary/40 transition-all hover:-translate-y-1 shadow-lg">
+                        <span class="text-xl font-black tracking-tight">Brutalist</span>
+                    </div>
+                    <div class="aspect-square rounded-3xl bg-surface-container-high ring-2 ring-primary p-8 flex flex-col justify-end group cursor-pointer shadow-2xl shadow-primary/10">
+                        <span class="text-xl font-black tracking-tight text-primary">Editorial</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-primary/60 mt-1">Selected</span>
+                    </div>
+                    <div class="aspect-square rounded-3xl bg-surface-container-high border border-outline-variant/10 p-8 flex flex-col justify-end group cursor-pointer hover:border-primary/40 transition-all hover:-translate-y-1 shadow-lg">
+                        <span class="text-xl font-black tracking-tight">Glassmorphic</span>
+                    </div>
+                    <div class="aspect-square rounded-3xl bg-surface-container-high border border-outline-variant/10 p-8 flex flex-col justify-end group cursor-pointer hover:border-primary/40 transition-all hover:-translate-y-1 shadow-lg">
+                        <span class="text-xl font-black tracking-tight">Y2K Chrome</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mood" class="space-y-12 pb-24">
+                <div class="flex items-center gap-4">
+                    <div class="w-8 h-[2px] bg-primary/30"></div>
+                    <h3 class="text-xs font-black uppercase tracking-[0.4em] text-primary">02. Mood Dials</h3>
+                </div>
+                <div class="grid grid-cols-1 @[60rem]:grid-cols-2 gap-16">
+                    <div class="space-y-6">
+                        <div class="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] opacity-30"><span>Minimal</span><span>Maximal</span></div>
+                        <input type="range" class="w-full" value="30">
+                        <p class="text-sm font-black tracking-tight opacity-80 uppercase">Content Density</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] opacity-30"><span>Serious</span><span>Playful</span></div>
+                        <input type="range" class="w-full" value="65">
+                        <p class="text-sm font-black tracking-tight opacity-80 uppercase">Playfulness</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Live Preview Pane AS A SIBLING -->
+        <div id="preview-pane" class="w-full flex-[0_0_50%] h-screen sticky top-0 bg-[#0d0011] border-l border-[#401a47]/30 hidden">
+            <div class="h-full flex flex-col">
+                <div class="p-8 border-b border-[#401a47]/20 flex justify-between items-center bg-[#1f0027]/40 backdrop-blur-md">
+                    <div class="flex items-center gap-3">
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_rgba(34,197,94,0.5)]"></span>
+                        <span class="text-xs font-black uppercase tracking-[0.3em] opacity-40">Architect Output</span>
+                    </div>
+                    <div class="text-[10px] font-black uppercase tracking-widest text-[#ffd5ff]/20">Streaming results...</div>
+                </div>
+                <div class="flex-1 m-6 rounded-[2.5rem] bg-white overflow-hidden relative shadow-[0_40px_100px_rgba(0,0,0,0.4)]">
+                    <iframe id="preview-iframe" class="w-full h-full border-none" src="about:blank"></iframe>
+                    <div id="generating-overlay" class="absolute inset-0 bg-surface/95 backdrop-blur-2xl flex flex-col items-center justify-center hidden">
+                        <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-8"></div>
+                        <p class="text-lg font-black tracking-[0.4em] uppercase text-primary animate-pulse">Forging Identity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Forge Style Engine Initialized');
+            
+            const modal = document.getElementById('intent-modal');
+            const initBtn = document.getElementById('initialize-forge-btn');
+            const genBtn = document.getElementById('generate-btn');
+            const previewPane = document.getElementById('preview-pane');
+            const overlay = document.getElementById('generating-overlay');
+            const mainCanvas = document.querySelector('main');
+
+            // 1. Modal Close & Generate Logic
+            if (initBtn) {
+                initBtn.addEventListener('click', () => {
+                    console.log('Initializing Forge session and starting generation...');
+                    if (modal) {
+                        modal.style.opacity = '0';
+                        setTimeout(() => {
+                            modal.classList.add('hidden');
+                            triggerGeneration(); // Trigger building as requested
+                        }, 500);
+                    }
+                });
+            }
+
+            // 2. Generation Logic
+            async function triggerGeneration() {
+                console.log('Starting generation sequence...');
+                
+                // Show Preview Pane
+                if (previewPane && mainCanvas && overlay) {
+                    previewPane.classList.remove('hidden');
+                    // We keep the main canvas as a container, but shrink it for split screen
+                    mainCanvas.classList.replace('max-w-7xl', 'max-w-full');
+                    mainCanvas.classList.add('px-8', 'lg:px-12'); // Ensure padding remains
+                    overlay.classList.remove('hidden');
+                }
+
+                // Gather Data
+                const intentData = {
+                    type: document.getElementById('intent-type')?.value || 'SaaS',
+                    audience: document.getElementById('intent-audience')?.value || 'Developers',
+                    goal: document.getElementById('intent-goal')?.value || 'Lead Gen'
+                };
+
+                const customizerData = {
+                    aesthetic: 'Editorial',
+                    density: 30,
+                    playful: 65,
+                    contrast: 80,
+                    motion: 45,
+                    tone: ['Witty', 'Storytelling'],
+                    layout: 'Split Screen',
+                    typography: 'Serif',
+                    colors: 'Aether Forge'
+                };
+
+                try {
+                    const response = await fetch('/generate/code', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ intent: intentData, customizer: customizerData })
+                    });
+                    
+                    const data = await response.json();
+                    const codeData = typeof data.code === 'string' ? JSON.parse(data.code) : data.code;
+                    console.log('Forged Results:', codeData);
+
+                    // Basic extraction for preview
+                    const h1Content = codeData.files['src/components/Hero.tsx']?.match(/<h1>(.*?)<\/h1>/s)?.[1] || 'Forged Identity';
+
+                    const htmlContent = `
+                        <html>
+                            <head>
+                                <script src="https://cdn.tailwindcss.com"><\/script>
+                                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
+                                <style>body { font-family: 'Inter', sans-serif; }</style>
+                            </head>
+                            <body class="p-24 flex items-center justify-center min-h-screen bg-white">
+                                <div class="max-w-xl text-center">
+                                    <div class="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 mb-6">Forge AI Output</div>
+                                    <h1 class="text-7xl font-black tracking-tighter leading-none text-black">${h1Content}</h1>
+                                    <p class="mt-8 text-gray-500 font-medium">Architecture compiled successfully using Llama 3.1 405B via NVIDIA NIM.</p>
+                                </div>
+                            </body>
+                        </html>
+                    `;
+
+                    const iframe = document.getElementById('preview-iframe');
+                    if (iframe) {
+                        iframe.contentWindow.document.open();
+                        iframe.contentWindow.document.write(htmlContent);
+                        iframe.contentWindow.document.close();
+                    }
+
+                } catch (error) {
+                    console.error('Generation Error:', error);
+                    alert('Backend unreachable or generation failed.');
+                } finally {
+                    if (overlay) overlay.classList.add('hidden');
+                }
+            }
+
+            if (genBtn) {
+                genBtn.addEventListener('click', triggerGeneration);
+            }
+        });
+    </script>
+</body>
+</html>

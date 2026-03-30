@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forge | Your AI Design Twin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f4bdff",
+              "error": "#ffb4ab",
+              "on-tertiary-fixed": "#001f28",
+              "error-container": "#93000a",
+              "on-tertiary-fixed-variant": "#004e60",
+              "on-primary-fixed": "#330044",
+              "on-surface": "#ffd5ff",
+              "surface": "#26022e",
+              "on-background": "#ffd5ff",
+              "inverse-surface": "#ffd5ff",
+              "on-tertiary": "#003543",
+              "on-secondary-fixed-variant": "#3323cc",
+              "on-surface-variant": "#d2c2d1",
+              "surface-variant": "#4c2652",
+              "on-error": "#690005",
+              "on-error-container": "#ffdad6",
+              "surface-container-low": "#300a37",
+              "on-secondary-container": "#b3b1ff",
+              "inverse-on-surface": "#47214d",
+              "on-primary": "#54006d",
+              "tertiary-fixed-dim": "#4cd6ff",
+              "surface-bright": "#512a57",
+              "surface-container": "#340f3b",
+              "primary-container": "#e894ff",
+              "on-tertiary-container": "#004d5f",
+              "primary-fixed": "#fbd7ff",
+              "surface-container-lowest": "#1f0027",
+              "outline": "#9b8c9b",
+              "tertiary": "#79ddff",
+              "tertiary-container": "#00c4ef",
+              "primary-fixed-dim": "#f0b0ff",
+              "surface-tint": "#f0b0ff",
+              "on-primary-fixed-variant": "#6f2287",
+              "secondary-fixed": "#e2dfff",
+              "secondary-container": "#3626ce",
+              "inverse-primary": "#893da1",
+              "tertiary-fixed": "#b7eaff",
+              "background": "#26022e",
+              "secondary": "#c3c0ff",
+              "on-secondary-fixed": "#0f0069",
+              "outline-variant": "#4e4350",
+              "on-primary-container": "#6d2186",
+              "on-secondary": "#1d00a5",
+              "surface-container-highest": "#4c2652",
+              "surface-dim": "#26022e",
+              "surface-container-high": "#401a47",
+              "secondary-fixed-dim": "#c3c0ff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #26022e;
+        color: #ffd5ff;
+        margin: 0;
+      }
+      .glass-panel {
+        background: rgba(76, 38, 82, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #f4bdff 0%, #e894ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .signature-gradient {
+        background: linear-gradient(135deg, #f4bdff 0%, #e894ff 100%);
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<!-- Navbar -->
+<nav class="fixed top-0 w-full z-50 bg-fuchsia-950/60 backdrop-blur-xl shadow-[0_20px_50px_rgba(31,_0,_39,_0.3)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-black tracking-tighter text-fuchsia-100 flex items-center gap-2">
+<span class="gradient-text">Forge</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-['Inter'] font-heavy tracking-tighter text-sm">
+<a class="text-fuchsia-100 font-bold border-b-2 border-fuchsia-400 pb-1" href="#">Features</a>
+<a class="text-fuchsia-300/70 hover:text-fuchsia-100 transition-colors" href="#">Pricing</a>
+<a class="text-fuchsia-300/70 hover:text-fuchsia-100 transition-colors" href="#">Docs</a>
+</div>
+<button class="signature-gradient text-on-primary font-bold px-6 py-2.5 rounded-lg text-sm hover:scale-95 active:scale-90 transition-transform shadow-lg shadow-primary/20">
+                Get Started Free
+            </button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col items-center justify-center text-center px-6 py-24 overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(244,189,255,0.08),transparent_70%)]"></div>
+<h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 max-w-5xl leading-[0.9] text-on-surface">
+                Forge: Your AI <br/><span class="gradient-text">Design Twin</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-12 font-medium leading-relaxed">
+                The intelligent force that shapes digital space. Forge learns your codebase and UI patterns to generate perfectly matched production-ready boilerplate.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 mb-20 z-10">
+<a href="customizer.html">
+    <button class="signature-gradient text-on-primary text-lg font-bold px-10 py-4 rounded-xl hover:scale-105 transition-transform duration-300 shadow-2xl shadow-primary/25">
+        Start Building
+    </button>
+</a>
+<button class="bg-surface-bright/20 border border-outline-variant/30 backdrop-blur-md text-on-surface text-lg font-bold px-10 py-4 rounded-xl hover:bg-surface-bright/40 transition-all">
+                    Watch Demo
+                </button>
+</div>
+<!-- Preview Inputs -->
+<div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/15 text-left group hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary">link</span>
+<span class="text-sm font-bold tracking-widest uppercase text-tertiary/80">Reference URL</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 mb-4 border border-outline-variant/10 text-on-surface-variant/60 text-sm">
+                        https://linear.app/design-system
+                    </div>
+<img class="w-full h-32 object-cover rounded-lg opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="minimalistic abstract representation of a high-end web dashboard layout with purple and violet accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXA3xRaRop3LTbVBp6Fm8xBU1T6CFWdyDc3gvnfh3wYI6ilVbEPf65fu9cJ6GHnG1AXbio3AeTLPEmJe1Eqq9pPVbbwPBNvAZaGIp3zyW-R44BFT46EILOjD_aT7gEtPEJvLEKmr4FEewGb1wqHH3gfwZcncP6dBtJVbwxa7ceWbCAlM0KYOa8u-iIv5081CrsCWgaYyx8PVThK0Rq_MUD-a-6pwFESw3dPfk4xmjrp5YtRwDxj6Dtl5deE9NOy7lMjOsdmzAFkd4"/>
+</div>
+<div class="glass-panel p-6 rounded-2xl border border-outline-variant/15 text-left group hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="text-sm font-bold tracking-widest uppercase text-primary/80">GitHub Repo</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 mb-4 border border-outline-variant/10 text-on-surface-variant/60 text-sm">
+                        github.com/org/modern-ui-stack
+                    </div>
+<img class="w-full h-32 object-cover rounded-lg opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" data-alt="clean code snippets on a dark IDE interface with syntax highlighting in purple and blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW-_aPUB7GOsxCZrBNz3W5QNmdlU6PdiLE9GBVafvMDwRnlvNsXSoHgi3Un-YNHJiAKtj8VJXrlPCpm4lRNT_td50sJF4ccwnrZzdspRND6lJLcDVSKokKzbKNB_UZUFT_8J3lPNp8QuWLArlOj6FNWy5gqZU-UA-qOpFY7wkfY9I6E_ONqTic_iLjXWTxk74w5PsYsCf0djCQCsaOtO7UmBhMk0L8_qUYGh_GSFHmvBU30OLjyeaYM-xanUL1labYi4xTegYpUR0"/>
+</div>
+</div>
+</section>
+<!-- Features Grid -->
+<section class="max-w-7xl mx-auto px-8 py-32">
+<div class="mb-20">
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4">Architecting <br/>the <span class="text-tertiary">Future</span></h2>
+<div class="w-24 h-1 bg-tertiary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-high p-8 rounded-[1.5rem] hover:scale-[1.02] transition-all duration-[0.4s] group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center mb-8 group-hover:bg-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+</div>
+<h3 class="text-xl font-bold mb-4 leading-tight">Paste Reference URL</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Analyzes design tokens, spacing, and component hierarchies instantly from any link.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-high p-8 rounded-[1.5rem] hover:scale-[1.02] transition-all duration-[0.4s] group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center mb-8 group-hover:bg-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" data-icon="code">code</span>
+</div>
+<h3 class="text-xl font-bold mb-4 leading-tight">Upload GitHub Repo</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Learns your naming conventions, tech stack, and architectural preferences automatically.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-high p-8 rounded-[1.5rem] hover:scale-[1.02] transition-all duration-[0.4s] group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center mb-8 group-hover:bg-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h3 class="text-xl font-bold mb-4 leading-tight">Generates Boilerplate</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Matches your style perfectly, delivering production-ready code in seconds.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-high p-8 rounded-[1.5rem] hover:scale-[1.02] transition-all duration-[0.4s] group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center mb-8 group-hover:bg-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h3 class="text-xl font-bold mb-4 leading-tight">Remembers Changes</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Continuous learning means your next project is even better than the last one.</p>
+</div>
+</div>
+</section>
+<!-- Flow Diagram -->
+<section class="bg-surface-container-lowest py-32 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col items-center">
+<div class="text-center mb-20">
+<span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">The Kinetic Engine</span>
+<h2 class="text-4xl md:text-5xl font-black tracking-tighter">How Forge Operates</h2>
+</div>
+<div class="relative flex flex-col md:flex-row items-center justify-between w-full max-w-5xl gap-12 md:gap-0">
+<!-- Step 1 -->
+<div class="z-10 bg-surface-container-high w-48 h-48 rounded-full flex flex-col items-center justify-center border border-primary/20 shadow-2xl shadow-primary/5">
+<span class="text-primary font-black text-xl mb-1">01</span>
+<span class="text-sm font-bold">Reference</span>
+</div>
+<!-- Arrow 1 -->
+<div class="hidden md:block flex-1 h-px bg-gradient-to-r from-primary to-tertiary mx-4 opacity-30 relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-tertiary"></div>
+</div>
+<div class="md:hidden h-12 w-px bg-gradient-to-b from-primary to-tertiary opacity-30"></div>
+<!-- Step 2 -->
+<div class="z-10 bg-surface-container-high w-48 h-48 rounded-full flex flex-col items-center justify-center border border-tertiary/20 shadow-2xl shadow-tertiary/5">
+<span class="text-tertiary font-black text-xl mb-1">02</span>
+<span class="text-sm font-bold">Analyze</span>
+</div>
+<!-- Arrow 2 -->
+<div class="hidden md:block flex-1 h-px bg-gradient-to-r from-tertiary to-primary mx-4 opacity-30 relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div class="md:hidden h-12 w-px bg-gradient-to-b from-tertiary to-primary opacity-30"></div>
+<!-- Step 3 -->
+<div class="z-10 bg-surface-container-high w-48 h-48 rounded-full flex flex-col items-center justify-center border border-primary/20 shadow-2xl shadow-primary/5">
+<span class="text-primary font-black text-xl mb-1">03</span>
+<span class="text-sm font-bold">Generate</span>
+</div>
+<!-- Arrow 3 -->
+<div class="hidden md:block flex-1 h-px bg-gradient-to-r from-primary to-tertiary mx-4 opacity-30 relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-tertiary"></div>
+</div>
+<div class="md:hidden h-12 w-px bg-gradient-to-b from-primary to-tertiary opacity-30"></div>
+<!-- Step 4 -->
+<div class="z-10 bg-surface-container-high w-48 h-48 rounded-full flex flex-col items-center justify-center border border-tertiary/20 shadow-2xl shadow-tertiary/5">
+<span class="text-tertiary font-black text-xl mb-1">04</span>
+<span class="text-sm font-bold">Build</span>
+</div>
+</div>
+<!-- Final Loopback -->
+<div class="mt-12 text-center flex flex-col items-center">
+<div class="h-12 w-px bg-gradient-to-b from-tertiary to-fuchsia-400 opacity-30"></div>
+<div class="bg-surface-bright px-8 py-4 rounded-full border border-fuchsia-400/20 font-bold text-fuchsia-100 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">autorenew</span>
+<span>05 Remember &amp; Refine</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="max-w-7xl mx-auto px-8 py-32">
+<h2 class="text-4xl md:text-5xl font-black tracking-tighter text-center mb-24">Voices from the <span class="gradient-text">Frontier</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-panel p-10 rounded-3xl border border-outline-variant/10 relative">
+<span class="text-6xl text-primary/10 font-serif absolute top-4 left-6">"</span>
+<p class="text-lg font-medium leading-relaxed mb-8 relative z-10 italic text-on-surface">
+                        Saved hours on boilerplate! Forge understood our exact Tailwind config and generated components that didn't need a single adjustment.
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a focused software developer in a studio with purple lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTUGgMyIwt4tLfR22d1GQGNAa8uwHkBbQMUoo8CPqNa4RbJvEWA5jjPCTHy_csMfkPWxlFQ5YJ8pJWOJKTgDEwAHqvmMy4_9HZixET7r7s_PiW1tpBhFYR4LIVFrkZZlyreyuRVg4aOGdVHNU0POKv5jFgdonrNnUICv_U8e1LTl-MXhSfMZTo8B6PB7cVyMFPG10QgNIXNIzLToZ3BDnlyLSwl5oPHX-BtfjUCZ3MKhJhq89Xm5Op4ex5oBv6qkG1tuhjFnBTCmw"/>
+</div>
+<div>
+<p class="font-bold text-primary">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">Lead Dev @ Nexa</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-10 rounded-3xl border border-outline-variant/10 relative mt-8 md:mt-16">
+<span class="text-6xl text-tertiary/10 font-serif absolute top-4 left-6">"</span>
+<p class="text-lg font-medium leading-relaxed mb-8 relative z-10 italic text-on-surface">
+                        The way it analyzes GitHub repos is pure magic. It's like having a senior engineer who already knows your entire design system.
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional woman smiling warmly in an office setting with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDICU-o6FnuVz_raOW8y-yPHeFNuiGoRDgkIPZrauhjU-Lq5BlInfcqPXz2spSWIh7M94ldut0YtEpoEivvm_hxv2tlD7LzN5sKFR-Z9pZcYFQLv4_7kkgy21EIxQ498a6T7wKfdtWYuUAIB9rmieX8R-DTqvj4TRls7cfyb7gxnieFjbT6-aCDWyfjqHOFCkVRQkTRwWiQsyBteNnr_pywW2gMPqvbBEgVImpZ-YyEE6tYvUwvCEjxmq6KSkuo3jheVgRPkuepBis"/>
+</div>
+<div>
+<p class="font-bold text-tertiary">Sarah Chen</p>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">Product Architect</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-10 rounded-3xl border border-outline-variant/10 relative">
+<span class="text-6xl text-primary/10 font-serif absolute top-4 left-6">"</span>
+<p class="text-lg font-medium leading-relaxed mb-8 relative z-10 italic text-on-surface">
+                        Forge isn't a template generator. It's an intelligent companion that scales with our design vision as it evolves.
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="modern businessman in a crisp shirt with dramatic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLHeWrkpRblR18CuBIVMffb3baYzGsS5VOCGSBZ4ziBFtYwInJ-JU0t5zg3kc3jOM6gzvu_1W0a7v5eZDaLD7yTsll8xl74Su2DZN-uk_NGXVvZ_kFrf-4fXilSPG0Q_4jO2GgcUsG4lWMfMpukxTAIcSXgWjIBvUAmlTH1InoQPzvNAABF1hTMzGlluOd13O-tvk5krveVyL-1dUNCVso-oHvVzHp_gPaYggskRviF7hlL9zyGAYKf5b8A_hy0rf-rsaMbGDUkNI"/>
+</div>
+<div>
+<p class="font-bold text-primary">Marcus Thorne</p>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">Senior Frontend Engineer</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer CTA -->
+<section class="max-w-7xl mx-auto px-8 py-32">
+<div class="signature-gradient p-1 bg-fuchsia-950 rounded-[2.5rem]">
+<div class="bg-surface py-20 px-8 rounded-[2.4rem] text-center">
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 text-on-surface">Ready to Forge Your Style?</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto mb-12 text-lg">Join 15,000+ developers building the future of the web with architectural AI.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+<input class="w-full bg-surface-container-lowest border-outline-variant/30 text-on-surface rounded-xl px-6 py-4 focus:ring-primary focus:border-primary" placeholder="Enter your email" type="email"/>
+<button class="w-full sm:w-auto signature-gradient text-on-primary font-black px-10 py-4 rounded-xl shadow-xl shadow-primary/20 hover:scale-105 transition-transform whitespace-nowrap">
+                            Join Beta
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-fuchsia-950 w-full py-12 px-8 border-t border-fuchsia-900/20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-lg font-bold text-fuchsia-200">Forge</div>
+<p class="font-['Inter'] text-xs leading-relaxed tracking-wide text-fuchsia-400 max-w-xs">
+                    © 2024 Forge AI. Built for the Kinetic Architect.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-8 md:justify-items-end">
+<div class="flex flex-col gap-3">
+<span class="text-[10px] uppercase font-black text-fuchsia-500/50 tracking-widest">Legal</span>
+<a class="text-xs text-fuchsia-500 hover:text-fuchsia-300 transition-opacity hover:underline decoration-fuchsia-500/50" href="#">Privacy Policy</a>
+<a class="text-xs text-fuchsia-500 hover:text-fuchsia-300 transition-opacity hover:underline decoration-fuchsia-500/50" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-[10px] uppercase font-black text-fuchsia-500/50 tracking-widest">Connect</span>
+<a class="text-xs text-fuchsia-500 hover:text-fuchsia-300 transition-opacity hover:underline decoration-fuchsia-500/50" href="#">Twitter</a>
+<a class="text-xs text-fuchsia-500 hover:text-fuchsia-300 transition-opacity hover:underline decoration-fuchsia-500/50" href="#">GitHub</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
